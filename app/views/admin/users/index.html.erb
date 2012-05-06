@@ -1,0 +1,7 @@
+<h2> Список юзверей</h2>
+<%- @user.each do |user| %>
+    <%=user.email %>
+ <%= image_tag user.avatar_url.to_s %>
+ <%= link_to "Изменить", edit_admin_user_path(user.id)%>
+    <br>
+<% end %>

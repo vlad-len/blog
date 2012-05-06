@@ -1,0 +1,15 @@
+<%= simple_form_for @user, :url=>admin_user_path do |f| %>
+    <B>Введите мыло</B>
+    <BR>
+    <%= f.email_field :email %>
+    <p>
+      <%= f.label :password %><br />
+      <%= f.password_field :password %> <br>
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %>
+      <%= f.file_field :avatar %>
+
+    </p>
+    <%= f.submit("обновить") %>
+    <%=  %>
+<%- end %>

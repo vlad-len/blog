@@ -1,0 +1,36 @@
+
+<h1>Hello,<%=current_user.email %> </h1>
+    <%= link_to "Добавить аватар", edit_profiles_path %>
+
+     <%= image_tag current_user.avatar_url.to_s %>
+<h2> Добро пожаловать на блог</h2>
+<%- @post.each do |post| %>
+    <b><h3>Название поста</h3> </b>
+    <%=post.title %>
+    <HR size="5" width="3"  >
+    <p>
+      <b><h3>Содержание поста</h3> </b>
+      <%= post.body %>
+    </p>
+
+    <HR>
+
+
+    <%= link_to "Изменить",edit_post_path(post.id) %>
+    <%= link_to "Удалить",post, :confirm => 'are you sure?', :method => :delete  %>
+    <%= link_to "Показать",post_path(post.id) %>
+
+
+
+
+<% end %>
+<BR>
+<BR>
+<%= link_to "Добавить", new_post_path %>
+<%= link_to "Мой блог", posts_path %>
+<% if user_signed_in? %>
+    <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
+<% end %>
+<% if admin_signed_in? %>
+  <%= link_to "Выйти из админки", destroy_admin_session_path, method: :delete%>
+<%end%>

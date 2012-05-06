@@ -1,0 +1,5 @@
+<%=  debug @user.inspect %>
+<%=simple_form_for @user, :url => {:action =>"update"} do |f| %>
+<%= f.file_field :avatar %>
+<%= f.submit %>
+<%end%>

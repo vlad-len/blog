@@ -1,0 +1,12 @@
+<%= simple_form_for @post do |f| %>
+    <B>Введите заголовок</B>
+    <BR>
+   <%= f.text_field :title %>
+    <p>
+      <b>Введите содержание</b>
+      <BR>
+   <%= f.text_area :body %>
+      
+      </p>
+    <%= f.submit("Создать") %>
+<%- end %>

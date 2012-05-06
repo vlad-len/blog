@@ -1,0 +1,44 @@
+
+<h1>Вы выбрали пост</h1>
+  <Br>
+  <B><U>Заголовок</U></B>
+<%=@post.title  %>
+  <P>
+  <B><U>Содержание</U></B>
+<%=@post.body %>
+  </P>
+<b><U>Пост был создан</U></b>
+<%= @post.created_at %>
+
+<h1>Коментарии</h1>
+<% @post.tweets.each do |tweet| %>
+    <p>
+      <b>Добавлен</b>
+
+     <%= tweet.comment %>
+      <b>От</b>
+      <%= tweet.author %>
+      
+    </p>
+
+
+ <%end%>
+
+  <B>Добавление коментария</B>
+  <BR>
+<%=  simple_form_for ([@post, @post.tweets.build]) do |f| %>
+    
+  <%=f.label :Коментарий %>
+      <BR>
+    <%=f.text_area :comment %>
+      <BR>
+  <%= f. label :Автор %>
+    <%= f.input :author %>
+    <%= f.submit("Добавить") %>
+    
+    
+    
+    <%=link_to 'Редактировать', edit_post_path(@post) %>
+    <%=link_to 'Назад', posts_path %>
+    
+<% end  %>
